@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="it" class="scroll-smooth">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0F1E36" />
+<meta name="description" content="CAF CGN SpA dei Professionisti a Nardò (LE): 730, ISEE, successioni, pensioni, NASpI e revisione gratuita delle bollette luce e gas. Via Principi di Savoia 63." />
+<title>CAF CGN SpA dei Professionisti | CAF e Patronato a Nardò (LE)</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='1.5' y='1.5' width='45' height='45' rx='12' fill='%230F1E36'/%3E%3Crect x='1.5' y='1.5' width='45' height='45' rx='12' fill='none' stroke='%230D5C46' stroke-width='1.5'/%3E%3Cpath d='M14 33 V21.5 a10 10 0 0 1 20 0 V33' fill='none' stroke='%23E8F3EE' stroke-width='2.6' stroke-linecap='round'/%3E%3Cline x1='24' y1='33' x2='24' y2='19.5' stroke='%230D5C46' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='15.5' r='2' fill='%23D97706'/%3E%3Cline x1='11' y1='37.5' x2='37' y2='37.5' stroke='%23E8F3EE' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        navy: { DEFAULT: '#0F1E36', light: '#1B2F4E' },
+        brand: '#0D5C46',
+        sage: '#E8F3EE',
+        parchment: '#F9FAFB',
+        energy: '#D97706',
+      },
+    },
+  },
+};
+</script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  body { background-color: #F9FAFB; color: #0E1726; }
+  ::selection { background-color: #0D5C46; color: #F9FAFB; }
+
+  .line-mask { display: block; overflow: hidden; padding-bottom: 0.3rem; }
+  .line-mask > span { display: block; transform: translateY(115%); animation: lineUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  @keyframes lineUp { to { transform: translateY(0); } }
+
+  .fade-load { opacity: 0; transform: translateY(20px); animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal.revealed { opacity: 1; transform: none; }
+
+  @keyframes marquee-drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .animate-marquee-drift { animation: marquee-drift 48s linear infinite; }
+
+  @keyframes whatsapp-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+    70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+  .whatsapp-pulse { animation: whatsapp-pulse 2.4s ease-out infinite; }
+
+  @keyframes floatDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+  .float-down { animation: floatDown 1.8s ease-in-out infinite; }
+
+  .grain { position: relative; }
+  .grain::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  input[type="range"].bill-slider {
+    -webkit-appearance: none; appearance: none; height: 6px; border-radius: 999px;
+    background: linear-gradient(to right, #D97706 var(--fill, 24%), #E2E8F0 var(--fill, 24%));
+    outline: none;
+  }
+  input[type="range"].bill-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 999px;
+    background: #0F1E36; border: 4px solid #FBBF24; cursor: pointer; transition: transform 0.2s ease;
+  }
+  input[type="range"].bill-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  input[type="range"].bill-slider::-moz-range-thumb {
+    width: 26px; height: 26px; border-radius: 999px; background: #0F1E36; border: 4px solid #FBBF24; cursor: pointer;
+  }
+
+  #hero-frame { transition: transform 0.25s ease-out; transform-style: preserve-3d; }
+  .lucide { display: inline-block; vertical-align: middle; }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ===================== NAVBAR ===================== -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-colors duration-500 bg-transparent border-b border-transparent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-[72px]">
+      <a href="#" class="shrink-0 flex items-center gap-3" aria-label="Torna all'inizio">
+        <svg viewBox="0 0 48 48" class="w-10 h-10 shrink-0" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#0F1E36" />
+          <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="none" stroke="#0D5C46" stroke-width="1.5" />
+          <path d="M14 33 V21.5 a10 10 0 0 1 20 0 V33" fill="none" stroke="#E8F3EE" stroke-width="2.6" stroke-linecap="round" />
+          <line x1="24" y1="33" x2="24" y2="19.5" stroke="#0D5C46" stroke-width="2.6" stroke-linecap="round" />
+          <circle cx="24" cy="15.5" r="2" fill="#D97706" />
+          <line x1="11" y1="37.5" x2="37" y2="37.5" stroke="#E8F3EE" stroke-width="2.2" stroke-linecap="round" />
+        </svg>
+        <span class="leading-none">
+          <span id="logo-title" class="block font-serif text-lg font-bold tracking-tight text-white">CAF CGN</span>
+          <span id="logo-sub" class="block text-[10px] uppercase tracking-[0.18em] mt-1 text-slate-300 font-semibold">SpA dei Professionisti</span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8" aria-label="Navigazione principale">
+        <a href="#servizi-fiscali" class="nav-link text-sm font-semibold tracking-wide transition-colors duration-300 text-slate-200 hover:text-brand">Servizi Fiscali</a>
+        <a href="#servizi-previdenziali" class="nav-link text-sm font-semibold tracking-wide transition-colors duration-300 text-slate-200 hover:text-brand">Previdenziali</a>
+        <a href="#bollette" class="nav-link text-sm font-semibold tracking-wide transition-colors duration-300 text-slate-200 hover:text-brand">Luce &amp; Gas</a>
+        <a href="#perche-noi" class="nav-link text-sm font-semibold tracking-wide transition-colors duration-300 text-slate-200 hover:text-brand">Perché Noi</a>
+        <a href="#contatti" class="nav-link text-sm font-semibold tracking-wide transition-colors duration-300 text-slate-200 hover:text-brand">Contatti</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a id="nav-phone" href="tel:+393279720096" class="hidden md:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 bg-white/10 text-white border border-white/25 backdrop-blur hover:bg-white/20">
+          <i data-lucide="phone" class="w-4 h-4"></i> 327 972 0096
+        </a>
+        <button id="menu-btn" aria-label="Apri menu" class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-full text-white transition-colors">
+          <i data-lucide="menu" class="w-6 h-6" id="menu-icon-open"></i>
+          <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-parchment border-t border-slate-200 px-6 py-6 space-y-1">
+    <a href="#servizi-fiscali" class="mobile-link block w-full text-left py-3 text-base font-semibold text-slate-800 border-b border-slate-100">Servizi Fiscali</a>
+    <a href="#servizi-previdenziali" class="mobile-link block w-full text-left py-3 text-base font-semibold text-slate-800 border-b border-slate-100">Servizi Previdenziali</a>
+    <a href="#bollette" class="mobile-link block w-full text-left py-3 text-base font-semibold text-slate-800 border-b border-slate-100">Luce &amp; Gas</a>
+    <a href="#perche-noi" class="mobile-link block w-full text-left py-3 text-base font-semibold text-slate-800 border-b border-slate-100">Perché Noi</a>
+    <a href="#contatti" class="mobile-link block w-full text-left py-3 text-base font-semibold text-slate-800">Contatti</a>
+    <a href="tel:+393279720096" class="mt-4 flex items-center justify-center gap-2 rounded-full bg-navy text-white px-5 py-3 text-sm font-semibold">
+      <i data-lucide="phone" class="w-4 h-4"></i> Chiama: 327 972 0096
+    </a>
+  </div>
+</header>
+
+<main>
+<!-- ===================== HERO ===================== -->
+<section id="hero" class="relative min-h-screen bg-navy grain overflow-hidden flex items-center">
+  <div aria-hidden="true" class="pointer-events-none select-none absolute -right-10 bottom-[-6vw] font-serif font-black leading-none text-[34vw] text-transparent" style="-webkit-text-stroke: 1px rgba(232,243,238,0.07);">CGN</div>
+  <div aria-hidden="true" class="pointer-events-none absolute top-0 right-0 w-[55vw] h-[55vw] rounded-full opacity-25 blur-3xl" style="background: radial-gradient(circle, #0D5C46 0%, transparent 65%);"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div class="lg:col-span-7">
+        <div class="fade-load inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-brand/20 px-4 py-2" style="animation-delay: 0.1s;">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-300"></i>
+          <span class="text-xs uppercase tracking-[0.2em] font-semibold text-emerald-100">Ufficio Autorizzato CAF CGN · Nardò (LE)</span>
+        </div>
+
+        <h1 class="mt-8 font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.12]">
+          <span class="line-mask"><span style="animation-delay: 0.25s;">Fisco, pensioni e</span></span>
+          <span class="line-mask"><span style="animation-delay: 0.41s;">bollette leggere.</span></span>
+          <span class="line-mask"><span class="italic text-[#8FD3B6]" style="animation-delay: 0.57s;">Un solo indirizzo.</span></span>
+        </h1>
+
+        <p class="fade-load mt-6 max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed" style="animation-delay: 0.85s;">
+          730, ISEE, successioni, pensioni, NASpI e revisione gratuita delle tue bollette luce &amp; gas.
+          Ti aspettiamo in Via Principi di Savoia 63, a Nardò.
+        </p>
+
+        <div class="fade-load mt-10 flex flex-wrap items-center gap-4" style="animation-delay: 1s;">
+          <a href="#contatti" class="group inline-flex items-center gap-2.5 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#0a4a38] hover:gap-4">
+            <i data-lucide="calendar-check" class="w-4 h-4"></i> Prenota un appuntamento
+          </a>
+          <a href="#bollette" class="group inline-flex items-center gap-2.5 rounded-full border border-amber-400/50 bg-amber-400/10 px-7 py-3.5 text-sm font-semibold text-amber-200 transition-all duration-300 hover:bg-amber-400/20 hover:gap-4">
+            <i data-lucide="zap" class="w-4 h-4"></i> Analisi bolletta gratuita
+          </a>
+        </div>
+
+        <div class="fade-load mt-12 flex flex-wrap gap-3" style="animation-delay: 1.2s;">
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-slate-300">
+            <i data-lucide="file-check-2" class="w-3.5 h-3.5 text-emerald-300"></i> P.IVA 04455200750
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-slate-300">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-300"></i> Via Principi di Savoia 63, 73048 Nardò (LE)
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-slate-300">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-300"></i> CAF &amp; Patronato in sede
+          </span>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 relative">
+        <div id="hero-frame" class="fade-load relative mx-auto w-full max-w-[380px]" style="animation-delay: 0.5s;">
+          <div aria-hidden="true" class="absolute -inset-6 rounded-[999px_999px_32px_32px] opacity-40 blur-2xl" style="background: radial-gradient(ellipse at top, #D97706 0%, transparent 60%);"></div>
+          <div class="relative overflow-hidden rounded-[999px_999px_28px_28px] border border-white/15 shadow-2xl shadow-black/50 aspect-[3/4]">
+            <img src="https://images.unsplash.com/photo-1588990799207-4260d3c1dbed?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHszfHxpdGFseSUyMGFyY2hpdGVjdHVyZSUyMGJ1aWxkaW5nJTIwc3VuJTIwZW5lcmd5JTIwdGF4JTIwcGFwZXJ8ZW58MHx8fHwxNzkxNDUzODczfDA&amp;ixlib=rb-4.1.0&amp;q=85" alt="Architettura italiana al sole" class="w-full h-full object-cover scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent"></div>
+          </div>
+          <div class="fade-load absolute -left-6 bottom-10 flex items-center gap-3 rounded-2xl border border-white/15 bg-navy-light/90 backdrop-blur-xl px-5 py-4 shadow-xl" style="animation-delay: 1.3s;">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-brand/30">
+              <i data-lucide="shield-check" class="w-5 h-5 text-emerald-300"></i>
+            </span>
+            <span class="text-xs leading-snug text-slate-200 font-medium">
+              Consulenza in sede
+              <span class="block text-slate-400">e a distanza, su appuntamento</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#servizi-fiscali" aria-label="Scorri ai servizi" class="fade-load absolute left-1/2 -translate-x-1/2 bottom-8 text-slate-400 hover:text-white transition-colors" style="animation-delay: 1.6s;">
+      <span class="block float-down"><i data-lucide="chevron-down" class="w-6 h-6"></i></span>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="relative overflow-hidden bg-brand py-5 border-y border-emerald-900/40" aria-hidden="true">
+  <div class="flex w-max animate-marquee-drift items-center" id="marquee-row"></div>
+</div>
+
+<!-- ===================== SERVIZI FISCALI ===================== -->
+<section id="servizi-fiscali" class="py-20 lg:py-28 bg-parchment scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="text-xs uppercase tracking-[0.2em] font-semibold text-brand">Servizi Fiscali</span>
+      <h2 class="mt-4 font-serif text-2xl sm:text-3xl lg:text-4xl tracking-tight text-navy">
+        Ogni adempimento fiscale, <span class="italic text-brand">sotto lo stesso tetto.</span>
+      </h2>
+      <p class="mt-4 text-base text-slate-600 leading-relaxed">
+        Dal 730 alla successione: porti i documenti, al resto pensiamo noi.
+        Tocca un servizio per richiedere un appuntamento.
+      </p>
+    </div>
+    <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="fiscali-grid"></div>
+  </div>
+</section>
+
+<!-- ===================== SERVIZI PREVIDENZIALI ===================== -->
+<section id="servizi-previdenziali" class="relative py-20 lg:py-28 bg-navy grain overflow-hidden scroll-mt-20">
+  <div aria-hidden="true" class="pointer-events-none absolute -left-32 top-1/3 w-[40vw] h-[40vw] rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #0D5C46 0%, transparent 65%);"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div class="max-w-2xl reveal">
+        <span class="text-xs uppercase tracking-[0.2em] font-semibold text-emerald-300">Servizi Previdenziali · Patronato</span>
+        <h2 class="mt-4 font-serif text-2xl sm:text-3xl lg:text-4xl tracking-tight text-white">
+          I tuoi diritti previdenziali, <span class="italic text-[#8FD3B6]">difesi con cura.</span>
+        </h2>
+      </div>
+      <div class="reveal">
+        <p class="max-w-sm text-base text-slate-400 leading-relaxed">
+          Come patronato seguiamo ogni pratica INPS dall'inizio alla fine, con assistenza gratuita
+          per le prestazioni assistenziali.
+        </p>
+      </div>
+    </div>
+    <div class="mt-14 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5" id="previdenziali-grid"></div>
+  </div>
+</section>
+
+<!-- ===================== BOLLETTE ===================== -->
+<section id="bollette" class="relative py-20 lg:py-28 bg-parchment overflow-hidden scroll-mt-20">
+  <div aria-hidden="true" class="pointer-events-none absolute right-0 top-0 w-[45vw] h-[45vw] rounded-full opacity-15 blur-3xl" style="background: radial-gradient(circle, #D97706 0%, transparent 65%);"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-6 reveal">
+        <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-energy">
+          <i data-lucide="zap" class="w-4 h-4"></i> Revisione Bollette Luce &amp; Gas
+        </span>
+        <h2 class="mt-4 font-serif text-2xl sm:text-3xl lg:text-4xl tracking-tight text-navy">
+          La tua bolletta può valere <span class="italic text-energy">molto meno.</span>
+        </h2>
+        <p class="mt-4 text-base text-slate-600 leading-relaxed max-w-lg">
+          Porta l'ultima bolletta di luce e gas: la analizziamo insieme e ti diciamo,
+          con numeri alla mano, quanto puoi risparmiare ogni anno.
+        </p>
+        <div class="mt-8 space-y-5">
+          <div class="flex gap-4">
+            <i data-lucide="check-circle-2" class="w-6 h-6 text-energy shrink-0 mt-0.5"></i>
+            <div>
+              <h3 class="text-base font-semibold text-navy">Penali e costi nascosti</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">Controlliamo voci anomale, conguagli e costi extra che gonfiano la bolletta.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <i data-lucide="check-circle-2" class="w-6 h-6 text-energy shrink-0 mt-0.5"></i>
+            <div>
+              <h3 class="text-base font-semibold text-navy">Tariffa giusta per te</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">Verifichiamo se la tua offerta è ancora conveniente rispetto al mercato attuale.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <i data-lucide="check-circle-2" class="w-6 h-6 text-energy shrink-0 mt-0.5"></i>
+            <div>
+              <h3 class="text-base font-semibold text-navy">Zero costi di pratica</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">La prima analisi della bolletta è gratuita e senza alcun impegno.</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/393279720096?text=Buongiorno%2C%20vorrei%20far%20revisionare%20la%20mia%20bolletta%20luce%20e%20gas." target="_blank" rel="noopener noreferrer" class="mt-10 inline-flex items-center gap-3 rounded-full bg-navy px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-brand">
+          <i data-lucide="upload" class="w-4 h-4"></i> Inviaci la tua bolletta su WhatsApp
+        </a>
+      </div>
+
+      <div class="lg:col-span-6 reveal">
+        <div class="relative rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/5 overflow-hidden">
+          <div class="relative h-40 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1741194700803-fbfcbec28879?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwyfHxpdGFseSUyMGFyY2hpdGVjdHVyZSUyMGJ1aWxkaW5nJTIwc3VuJTIwZW5lcmd5JTIwdGF4JTIwcGFwZXJ8ZW58MHx8fHwxNzkxNDUzODczfDA&amp;ixlib=rb-4.1.0&amp;q=85" alt="Edificio italiano illuminato dal sole" loading="lazy" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent"></div>
+          </div>
+          <div class="p-7 lg:p-9 -mt-8 relative">
+            <div class="flex items-center gap-3">
+              <span class="flex items-center justify-center w-11 h-11 rounded-full bg-amber-100 text-energy">
+                <i data-lucide="lightbulb" class="w-5 h-5"></i>
+              </span>
+              <h3 class="text-lg font-semibold text-navy">Quanto spendi al mese?</h3>
+            </div>
+            <div class="mt-8">
+              <div class="flex items-baseline justify-between">
+                <span class="text-sm text-slate-500">Bolletta mensile (luce + gas)</span>
+                <span id="spesa-value" class="font-serif text-3xl font-bold text-navy">€ 180</span>
+              </div>
+              <input id="bill-slider" type="range" min="50" max="600" step="10" value="180" class="bill-slider w-full mt-4" aria-label="Spesa mensile bollette" />
+              <div class="flex justify-between text-xs text-slate-400 mt-2"><span>€ 50</span><span>€ 600</span></div>
+            </div>
+            <div class="mt-8 rounded-2xl bg-sage border border-brand/20 p-5 flex items-center justify-between">
+              <span class="text-sm font-medium text-brand">Risparmio stimato, fino a</span>
+              <span class="font-serif text-3xl font-bold text-brand"><span id="risparmio-value">€ 432</span><span class="text-sm font-sans font-medium">/anno</span></span>
+            </div>
+            <p class="mt-4 text-xs text-slate-400 leading-relaxed">
+              Stima indicativa basata su un risparmio del 20%. L'analisi reale sulla tua bolletta è gratuita e senza impegno.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PERCHÉ NOI ===================== -->
+<section id="perche-noi" class="py-20 lg:py-28 bg-white border-y border-slate-100 scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <div class="lg:col-span-5">
+        <div class="lg:sticky lg:top-28 reveal">
+          <span class="text-xs uppercase tracking-[0.2em] font-semibold text-brand">Perché scegliere noi?</span>
+          <h2 class="mt-4 font-serif text-2xl sm:text-3xl lg:text-4xl tracking-tight text-navy">
+            La differenza la fa <span class="italic text-brand">chi ti sta di fronte.</span>
+          </h2>
+          <div class="mt-10 relative">
+            <div class="overflow-hidden rounded-[160px_160px_24px_24px] border border-slate-200 shadow-xl shadow-slate-900/5 aspect-[4/5] max-w-[340px]">
+              <img src="https://images.unsplash.com/photo-1562564055-71e051d33c19?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBpdGFsaWFuJTIwY29uc3VsdGF0aW9uJTIwb2ZmaWNlJTIwYWR2aWNlJTIwbWVldGluZ3xlbnwwfHx8fDE3OTE0NTM4NjZ8MA&amp;ixlib=rb-4.1.0&amp;q=85" alt="Consulenza professionale in ufficio" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+            </div>
+            <div class="absolute -bottom-5 -right-2 sm:right-6 rounded-2xl bg-navy text-white px-6 py-4 shadow-xl">
+              <span class="font-serif italic text-lg">CAF &amp; Patronato</span>
+              <span class="block text-xs text-slate-300 mt-0.5">in un'unica sede, a Nardò</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7 flex flex-col justify-center">
+        <div class="reveal group flex gap-6 sm:gap-10 border-t border-slate-200 py-10 transition-colors duration-300 hover:bg-parchment/60 px-2 sm:px-4 -mx-2 sm:-mx-4">
+          <span class="font-serif italic text-4xl sm:text-5xl text-slate-200 group-hover:text-brand transition-colors duration-300 shrink-0 w-16 sm:w-20">01</span>
+          <div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="badge-check" class="w-5 h-5 text-brand"></i>
+              <h3 class="text-lg sm:text-xl font-semibold text-navy">Professionalità</h3>
+            </div>
+            <p class="mt-3 text-base text-slate-600 leading-relaxed max-w-md">Operatori qualificati e aggiornati sulle ultime norme fiscali e previdenziali. Ogni pratica è controllata due volte prima dell'invio.</p>
+          </div>
+        </div>
+        <div class="reveal group flex gap-6 sm:gap-10 border-t border-slate-200 py-10 transition-colors duration-300 hover:bg-parchment/60 px-2 sm:px-4 -mx-2 sm:-mx-4">
+          <span class="font-serif italic text-4xl sm:text-5xl text-slate-200 group-hover:text-brand transition-colors duration-300 shrink-0 w-16 sm:w-20">02</span>
+          <div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="timer" class="w-5 h-5 text-brand"></i>
+              <h3 class="text-lg sm:text-xl font-semibold text-navy">Rapidità</h3>
+            </div>
+            <p class="mt-3 text-base text-slate-600 leading-relaxed max-w-md">Appuntamenti veloci e pratiche trasmesse in giornata a INPS e Agenzia delle Entrate. Niente code, niente attese inutili.</p>
+          </div>
+        </div>
+        <div class="reveal group flex gap-6 sm:gap-10 border-y border-slate-200 py-10 transition-colors duration-300 hover:bg-parchment/60 px-2 sm:px-4 -mx-2 sm:-mx-4">
+          <span class="font-serif italic text-4xl sm:text-5xl text-slate-200 group-hover:text-brand transition-colors duration-300 shrink-0 w-16 sm:w-20">03</span>
+          <div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="heart-handshake" class="w-5 h-5 text-brand"></i>
+              <h3 class="text-lg sm:text-xl font-semibold text-navy">Assistenza personalizzata</h3>
+            </div>
+            <p class="mt-3 text-base text-slate-600 leading-relaxed max-w-md">Un referente dedicato che conosce la tua storia e segue la tua posizione anno dopo anno, con la cura di chi ti conosce di persona.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOVE SIAMO ===================== -->
+<section id="dove-siamo" class="py-20 lg:py-28 bg-parchment scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+      <div class="reveal flex flex-col justify-center">
+        <span class="text-xs uppercase tracking-[0.2em] font-semibold text-brand">Dove ci troviamo</span>
+        <h2 class="mt-4 font-serif text-2xl sm:text-3xl lg:text-4xl tracking-tight text-navy">
+          Nel cuore di Nardò, <span class="italic text-brand">a due passi da te.</span>
+        </h2>
+        <div class="mt-8 space-y-4">
+          <div class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5">
+            <span class="flex items-center justify-center w-11 h-11 rounded-full bg-sage text-brand shrink-0"><i data-lucide="map-pin" class="w-5 h-5"></i></span>
+            <div>
+              <h3 class="text-sm font-semibold text-navy uppercase tracking-wide">Indirizzo</h3>
+              <p class="text-base text-slate-600 mt-1">Via Principi di Savoia 63, 73048 Nardò (LE)</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5">
+            <span class="flex items-center justify-center w-11 h-11 rounded-full bg-sage text-brand shrink-0"><i data-lucide="phone" class="w-5 h-5"></i></span>
+            <div>
+              <h3 class="text-sm font-semibold text-navy uppercase tracking-wide">Telefono</h3>
+              <a href="tel:+393279720096" class="text-base text-slate-600 mt-1 block hover:text-brand transition-colors">327 972 0096</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5">
+            <span class="flex items-center justify-center w-11 h-11 rounded-full bg-sage text-brand shrink-0"><i data-lucide="clock" class="w-5 h-5"></i></span>
+            <div>
+              <h3 class="text-sm font-semibold text-navy uppercase tracking-wide">Orari</h3>
+              <p class="text-base text-slate-600 mt-1">Lun – Ven · 10:00 – 13:00 / 17:30 – 20:00</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Via+Principi+di+Savoia+63%2C+73048+Nard%C3%B2+LE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-brand">
+            <i data-lucide="external-link" class="w-4 h-4"></i> Apri in Google Maps
+          </a>
+          <a href="https://wa.me/393279720096?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20servizi%20del%20CAF%20CGN%20di%20Nard%C3%B2." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 rounded-full border border-brand/40 bg-sage px-6 py-3 text-sm font-semibold text-brand transition-colors duration-300 hover:bg-brand hover:text-white">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> Scrivici su WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="reveal min-h-[380px]">
+        <div class="relative h-full min-h-[380px] rounded-3xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-900/5">
+          <iframe title="Mappa: CAF CGN SpA dei Professionisti, Via Principi di Savoia 63, Nardò" src="https://maps.google.com/maps?q=Via%20Principi%20di%20Savoia%2063%2C%2073048%20Nard%C3%B2%20LE&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed" class="absolute inset-0 w-full h-full" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTATTI ===================== -->
+<section id="contatti" class="relative py-20 lg:py-28 bg-navy grain overflow-hidden scroll-mt-20">
+  <div aria-hidden="true" class="pointer-events-none absolute left-1/3 -top-32 w-[50vw] h-[50vw] rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #0D5C46 0%, transparent 65%);"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-6 reveal">
+        <span class="text-xs uppercase tracking-[0.2em] font-semibold text-emerald-300">Contatti &amp; Prenotazioni</span>
+        <h2 class="mt-4 font-serif text-2xl sm:text-3xl lg:text-4xl tracking-tight text-white">
+          Raccontaci di cosa hai bisogno. <span class="italic text-[#8FD3B6]">Al resto pensiamo noi.</span>
+        </h2>
+        <p class="mt-4 text-base text-slate-300 leading-relaxed max-w-md">
+          Compila il modulo: ti ricontattiamo noi per fissare l'appuntamento e dirti
+          quali documenti portare. Nessuna attesa, nessuna fila.
+        </p>
+        <div class="mt-8 relative overflow-hidden rounded-[120px_120px_20px_20px] border border-white/15 aspect-[16/8] max-w-md">
+          <img src="https://images.unsplash.com/photo-1714974528737-3e6c7e4d11af?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBpdGFsaWFuJTIwY29uc3VsdGF0aW9uJTIwb2ZmaWNlJTIwYWR2aWNlJTIwbWVldGluZ3xlbnwwfHx8fDE3OTE0NTM4NjZ8MA&amp;ixlib=rb-4.1.0&amp;q=85" alt="Il team del CAF CGN di Nardò al lavoro" loading="lazy" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent"></div>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="tel:+393279720096" class="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/15">
+            <i data-lucide="phone" class="w-4 h-4 text-emerald-300"></i> 327 972 0096
+          </a>
+          <a href="https://wa.me/393279720096?text=Buongiorno%2C%20vorrei%20prenotare%20un%20appuntamento%20presso%20il%20CAF%20CGN%20di%20Nard%C3%B2." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-[#1eb856]">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp diretto
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 reveal">
+        <form id="contact-form" class="rounded-3xl border border-white/10 bg-white/[0.06] backdrop-blur-xl p-7 lg:p-9 shadow-2xl">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="f-nome" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Nome e cognome *</label>
+              <input id="f-nome" required placeholder="Mario Rossi" class="w-full rounded-xl border border-white/15 bg-navy/60 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition" />
+            </div>
+            <div>
+              <label for="f-tel" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Telefono *</label>
+              <input id="f-tel" required type="tel" placeholder="333 000 0000" class="w-full rounded-xl border border-white/15 bg-navy/60 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition" />
+            </div>
+            <div class="sm:col-span-2">
+              <label for="f-email" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Email (facoltativa)</label>
+              <input id="f-email" type="email" placeholder="mario.rossi@email.it" class="w-full rounded-xl border border-white/15 bg-navy/60 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition" />
+            </div>
+            <div class="sm:col-span-2">
+              <label for="f-servizio" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Servizio richiesto *</label>
+              <select id="f-servizio" class="w-full rounded-xl border border-white/15 bg-navy/60 px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition">
+                <option class="bg-navy text-white">Modello 730</option>
+                <option class="bg-navy text-white">Redditi PF</option>
+                <option class="bg-navy text-white">ISEE &amp; DSU</option>
+                <option class="bg-navy text-white">SPID</option>
+                <option class="bg-navy text-white">Successioni</option>
+                <option class="bg-navy text-white">Contratti di locazione</option>
+                <option class="bg-navy text-white">Visure catastali</option>
+                <option class="bg-navy text-white">Colf e badanti</option>
+                <option class="bg-navy text-white">Pensioni</option>
+                <option class="bg-navy text-white">NASpI</option>
+                <option class="bg-navy text-white">Invalidità</option>
+                <option class="bg-navy text-white">Maternità</option>
+                <option class="bg-navy text-white">Assegni familiari</option>
+                <option class="bg-navy text-white">Revisione bollette Luce &amp; Gas</option>
+                <option class="bg-navy text-white">Altro</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="f-msg" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Messaggio (facoltativo)</label>
+              <textarea id="f-msg" rows="4" placeholder="Descrivi brevemente la tua esigenza..." class="w-full rounded-xl border border-white/15 bg-navy/60 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition resize-none"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="mt-7 w-full inline-flex items-center justify-center gap-2.5 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#0a4a38]">
+            <i data-lucide="send" class="w-4 h-4"></i> Invia la richiesta
+          </button>
+          <p id="form-success" class="hidden mt-4 text-sm text-emerald-300 text-center font-medium">
+            Perfetto! Si è aperta la chat WhatsApp con la tua richiesta già scritta: premi invio lì e ti rispondiamo subito.
+          </p>
+          <p class="mt-4 text-xs text-slate-400 text-center">
+            Inviando accetti di essere ricontattato per la gestione della tua richiesta.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-[#0A1628] border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-3">
+          <svg viewBox="0 0 48 48" class="w-10 h-10 shrink-0" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#0F1E36" />
+            <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="none" stroke="#0D5C46" stroke-width="1.5" />
+            <path d="M14 33 V21.5 a10 10 0 0 1 20 0 V33" fill="none" stroke="#E8F3EE" stroke-width="2.6" stroke-linecap="round" />
+            <line x1="24" y1="33" x2="24" y2="19.5" stroke="#0D5C46" stroke-width="2.6" stroke-linecap="round" />
+            <circle cx="24" cy="15.5" r="2" fill="#D97706" />
+            <line x1="11" y1="37.5" x2="37" y2="37.5" stroke="#E8F3EE" stroke-width="2.2" stroke-linecap="round" />
+          </svg>
+          <span class="leading-none">
+            <span class="block font-serif text-lg font-bold tracking-tight text-white">CAF CGN</span>
+            <span class="block text-[10px] uppercase tracking-[0.18em] mt-1 text-slate-300 font-semibold">SpA dei Professionisti</span>
+          </span>
+        </div>
+        <p class="mt-5 text-sm text-slate-400 leading-relaxed max-w-xs">
+          Centro di assistenza fiscale e patronato a Nardò. Le tue pratiche, seguite con professionalità e cura.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-xs uppercase tracking-[0.2em] font-semibold text-slate-400">Servizi</h3>
+        <ul class="mt-4 space-y-2.5">
+          <li><a href="#servizi-fiscali" class="text-sm text-slate-300 hover:text-emerald-300 transition-colors">Servizi Fiscali</a></li>
+          <li><a href="#servizi-previdenziali" class="text-sm text-slate-300 hover:text-emerald-300 transition-colors">Servizi Previdenziali</a></li>
+          <li><a href="#bollette" class="text-sm text-slate-300 hover:text-emerald-300 transition-colors">Revisione Bollette</a></li>
+          <li><a href="#contatti" class="text-sm text-slate-300 hover:text-emerald-300 transition-colors">Prenota un appuntamento</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xs uppercase tracking-[0.2em] font-semibold text-slate-400">Contatti</h3>
+        <ul class="mt-4 space-y-3 text-sm text-slate-300">
+          <li class="flex items-start gap-3"><i data-lucide="map-pin" class="w-4 h-4 text-emerald-300 mt-0.5 shrink-0"></i> Via Principi di Savoia 63, 73048 Nardò (LE)</li>
+          <li class="flex items-start gap-3"><i data-lucide="phone" class="w-4 h-4 text-emerald-300 mt-0.5 shrink-0"></i> <a href="tel:+393279720096" class="hover:text-emerald-300 transition-colors">327 972 0096</a></li>
+          <li class="flex items-start gap-3"><i data-lucide="clock" class="w-4 h-4 text-emerald-300 mt-0.5 shrink-0"></i> Lun – Ven · 10:00 – 13:00 / 17:30 – 20:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-slate-500">© <span id="year"></span> CAF CGN SpA dei Professionisti · Nardò (LE)</p>
+      <p class="text-xs text-slate-500">P.IVA 04455200750</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== WHATSAPP FLOTTANTE ===================== -->
+<a href="https://wa.me/393279720096?text=Buongiorno%2C%20vorrei%20informazioni%20sui%20servizi%20del%20CAF%20CGN%20di%20Nard%C3%B2." target="_blank" rel="noopener noreferrer" aria-label="Contattaci su WhatsApp" class="whatsapp-pulse fixed bottom-5 right-5 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl transition-transform duration-300 hover:scale-110">
+  <i data-lucide="message-circle" class="w-7 h-7"></i>
+</a>
+
+<script>
+lucide.createIcons();
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Dati servizi
+const FISCALI = [
+  { icon: 'file-text', title: 'Modello 730', desc: 'Dichiarazione per lavoratori dipendenti e pensionati, con rimborso diretto in busta paga o pensione.' },
+  { icon: 'receipt-text', title: 'Redditi PF', desc: 'Compilazione e trasmissione del Modello Redditi Persone Fisiche, con gestione di ogni quadro.' },
+  { icon: 'calculator', title: 'ISEE & DSU', desc: 'ISEE ordinario, universitario e socio-sanitario per bonus, agevolazioni e prestazioni statali.' },
+  { icon: 'fingerprint', title: 'SPID', desc: "Attivazione dell'identità digitale SPID e supporto per PEC e firma digitale." },
+  { icon: 'scroll-text', title: 'Successioni', desc: 'Dichiarazioni di successione ereditaria e volture catastali, senza pensieri per la famiglia.' },
+  { icon: 'key-round', title: 'Contratti di locazione', desc: "Stesura, registrazione, proroga e risoluzione dei contratti d'affitto, a canone libero o concordato." },
+  { icon: 'file-search', title: 'Visure catastali', desc: 'Rilascio immediato di visure catastali, planimetrie e ispezioni ipotecarie su tutto il territorio.' },
+  { icon: 'users', title: 'Colf e badanti', desc: 'Gestione completa del lavoro domestico: assunzione, buste paga mensili e adempimenti INPS.' },
+];
+
+const PREVIDENZIALI = [
+  { icon: 'landmark', title: 'Pensioni', desc: "Verifica dell'estratto conto contributivo e domande di pensione di vecchiaia, anticipata e di invalidità." },
+  { icon: 'briefcase', title: 'NASpI', desc: "Domanda di indennità di disoccupazione NASpI e controllo dell'esito direttamente con l'INPS." },
+  { icon: 'accessibility', title: 'Invalidità', desc: 'Riconoscimento di invalidità civile, accompagnamento e benefici della Legge 104.' },
+  { icon: 'baby', title: 'Maternità', desc: "Indennità di maternità e paternità, congedi parentali e bonus per l'infanzia." },
+  { icon: 'hand-coins', title: 'Assegni familiari', desc: "Attivazione e rinnovo dell'Assegno Unico Universale e degli assegni per il nucleo familiare." },
+];
+
+const MARQUEE = ['730 & Redditi PF', 'ISEE 2026', 'Pensioni & NASpI', 'Successioni', 'Revisione bollette Luce & Gas', 'SPID & Firma Digitale', 'Colf e Badanti', "Via Principi di Savoia 63 · Nardò"];
+
+// Marquee
+const mRow = document.getElementById('marquee-row');
+[...MARQUEE, ...MARQUEE].forEach((item) => {
+  const s = document.createElement('span');
+  s.className = 'flex items-center shrink-0';
+  s.innerHTML = `<span class="font-serif italic text-lg sm:text-xl text-emerald-50 tracking-wide whitespace-nowrap">${item}</span><span class="mx-8 text-amber-300 text-sm">◆</span>`;
+  mRow.appendChild(s);
+});
+
+// Card servizi fiscali
+const fGrid = document.getElementById('fiscali-grid');
+FISCALI.forEach((s, i) => {
+  const d = document.createElement('div');
+  d.className = 'reveal';
+  d.innerHTML = `
+    <a href="#contatti" class="group relative block w-full h-full text-left bg-white border border-slate-200 p-6 lg:p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/60 hover:shadow-xl hover:shadow-brand/10">
+      <span class="absolute top-5 right-6 font-serif italic text-2xl text-slate-200 group-hover:text-brand/40 transition-colors duration-300">${String(i + 1).padStart(2, '0')}</span>
+      <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-sage text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+        <i data-lucide="${s.icon}" class="w-6 h-6"></i>
+      </span>
+      <h3 class="mt-5 text-lg font-semibold text-navy">${s.title}</h3>
+      <p class="mt-2 text-sm text-slate-600 leading-relaxed">${s.desc}</p>
+      <span class="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-brand opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+        Richiedi <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+      </span>
+    </a>`;
+  fGrid.appendChild(d);
+});
+
+// Card servizi previdenziali
+const pGrid = document.getElementById('previdenziali-grid');
+PREVIDENZIALI.forEach((s) => {
+  const d = document.createElement('div');
+  d.className = 'reveal';
+  d.innerHTML = `
+    <a href="#contatti" class="group block w-full h-full text-left rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 transition-all duration-300 hover:-translate-y-1.5 hover:bg-white/10 hover:border-emerald-400/40">
+      <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand/25 text-emerald-300 transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+        <i data-lucide="${s.icon}" class="w-6 h-6"></i>
+      </span>
+      <h3 class="mt-5 text-lg font-semibold text-white flex items-center gap-2">
+        ${s.title}
+        <i data-lucide="arrow-up-right" class="w-4 h-4 text-emerald-300 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"></i>
+      </h3>
+      <p class="mt-2 text-sm text-slate-400 leading-relaxed">${s.desc}</p>
+    </a>`;
+  pGrid.appendChild(d);
+});
+
+lucide.createIcons();
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+// Navbar scroll state
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-link');
+const navPhone = document.getElementById('nav-phone');
+const logoTitle = document.getElementById('logo-title');
+const logoSub = document.getElementById('logo-sub');
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function updateNav() {
+  const scrolled = window.scrollY > 40 || !mobileMenu.classList.contains('hidden');
+  navbar.className = scrolled
+    ? 'fixed top-0 inset-x-0 z-50 transition-colors duration-500 bg-parchment/90 backdrop-blur-xl border-b border-slate-200/80'
+    : 'fixed top-0 inset-x-0 z-50 transition-colors duration-500 bg-transparent border-b border-transparent';
+  navLinks.forEach((l) => { l.className = `nav-link text-sm font-semibold tracking-wide transition-colors duration-300 hover:text-brand ${scrolled ? 'text-slate-700' : 'text-slate-200'}`; });
+  navPhone.className = scrolled
+    ? 'hidden md:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 bg-navy text-white hover:bg-brand'
+    : 'hidden md:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 bg-white/10 text-white border border-white/25 backdrop-blur hover:bg-white/20';
+  logoTitle.className = `block font-serif text-lg font-bold tracking-tight ${scrolled ? 'text-navy' : 'text-white'}`;
+  logoSub.className = `block text-[10px] uppercase tracking-[0.18em] mt-1 font-semibold ${scrolled ? 'text-brand' : 'text-slate-300'}`;
+  menuBtn.className = `lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-full transition-colors ${scrolled ? 'text-navy' : 'text-white'}`;
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+
+// Menu mobile
+const iconOpen = document.getElementById('menu-icon-open');
+const iconClose = document.getElementById('menu-icon-close');
+menuBtn.addEventListener('click', () => {
+  const opening = mobileMenu.classList.contains('hidden');
+  mobileMenu.classList.toggle('hidden');
+  iconOpen.classList.toggle('hidden', opening);
+  iconClose.classList.toggle('hidden', !opening);
+  updateNav();
+});
+document.querySelectorAll('.mobile-link').forEach((l) => l.addEventListener('click', () => {
+  mobileMenu.classList.add('hidden');
+  iconOpen.classList.remove('hidden');
+  iconClose.classList.add('hidden');
+  updateNav();
+}));
+
+// Tilt 3D hero
+const frame = document.getElementById('hero-frame');
+frame.addEventListener('mousemove', (e) => {
+  const r = frame.getBoundingClientRect();
+  const px = (e.clientX - r.left) / r.width - 0.5;
+  const py = (e.clientY - r.top) / r.height - 0.5;
+  frame.style.transform = `perspective(900px) rotateY(${px * 10}deg) rotateX(${-py * 10}deg)`;
+});
+frame.addEventListener('mouseleave', () => { frame.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)'; });
+
+// Calcolatore bollette
+const slider = document.getElementById('bill-slider');
+const spesaEl = document.getElementById('spesa-value');
+const rispEl = document.getElementById('risparmio-value');
+function updateCalc() {
+  const v = Number(slider.value);
+  slider.style.setProperty('--fill', ((v - 50) / (600 - 50)) * 100 + '%');
+  spesaEl.textContent = '€ ' + v;
+  rispEl.textContent = '€ ' + Math.round(v * 12 * 0.2);
+}
+slider.addEventListener('input', updateCalc);
+updateCalc();
+
+// Modulo contatti -> WhatsApp
+document.getElementById('contact-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nome = document.getElementById('f-nome').value.trim();
+  const tel = document.getElementById('f-tel').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const servizio = document.getElementById('f-servizio').value;
+  const msg = document.getElementById('f-msg').value.trim();
+  let text = `Buongiorno, sono ${nome} (tel. ${tel}).`;
+  if (email) text += ` Email: ${email}.`;
+  text += ` Vorrei un appuntamento per: ${servizio}.`;
+  if (msg) text += ` ${msg}`;
+  window.open('https://wa.me/393279720096?text=' + encodeURIComponent(text), '_blank');
+  document.getElementById('form-success').classList.remove('hidden');
+});
+</script>
+</body>
+</html>
